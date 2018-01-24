@@ -25,7 +25,7 @@ public class main {
                     contactActuel = Contact.nbContacts;
                     ct[contactActuel] = new Contact();
                     System.out.print("\nCe contact sera entré à la position #" + Contact.nbContacts + ".\n" +
-                            "Veuillez entrer les informations suivantes:\n" +
+                            "Veuillez entrer les informations suivantes (laisser vide si correct):\n" +
                             "Prénom: ");
                     ct[contactActuel].setPrenom(sc.next());
                     System.out.print("Nom: ");
@@ -54,9 +54,27 @@ public class main {
                     break;
                 case 2:
                     if (Contact.nbContacts != 0) {
-
+                        if (Contact.nbContacts == 1) {
+                            System.out.print("\nVous avez un contact:");
+                            contactActuel = 0;
+                        }
+                        else {
+                            System.out.print("\nÀ quelle position voulez-vous voir la fiche du contact?\n" +
+                                    "> ");
+                            entree = sc.nextInt() - 1;
+                        }
+                        System.out.println("\nPrénom: " + ct[contactActuel].getPrenom() + "\n" +
+                                "Nom: " + ct[contactActuel].getNom() + "\n" +
+                                "Adresse:\n" +
+                                " Numéro civique: " + ct[contactActuel].ad.getNumeroCivique() + "\n" +
+                                " Rue: " + ct[contactActuel].ad.getRue() + "\n" +
+                                " Appartement: " + ct[contactActuel].ad.getAppartement() + "\n" +
+                                " Ville: " + ct[contactActuel].ad.getVille() + "\n" +
+                                " Province: " + ct[contactActuel].ad.getProvince() + "\n" +
+                                " Pays: " + ct[contactActuel].ad.getPays() + "\n" +
+                                "");
                     }
-                    else System.out.println("Vous n'avez pas de contacts.");
+                    else System.out.println("\nVous n'avez pas de contacts.");
                     break;
 
                 case 3:
