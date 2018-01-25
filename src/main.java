@@ -8,6 +8,7 @@ public class main {
         boolean continuer = true;
         int entree = 0, contactActuel = 0;
         String rouge = (char)27 + "[31m";
+        char entreeChar = ' ';
 
         Scanner sc = new Scanner(System.in);
         Contact ct[] = new Contact[20];
@@ -20,35 +21,53 @@ public class main {
                     "4- Quitter\n" +
                     "> ");
             entree = sc.nextInt();
+            if (entree == 3) entree = 1;
             switch (entree) {
-                case 1:
+                case 1:  //Tout mettre en nextLine()
                     contactActuel = Contact.nbContacts;
                     ct[contactActuel] = new Contact();
                     System.out.print("\nCe contact sera entré à la position #" + Contact.nbContacts + ".\n" +
-                            "Veuillez entrer les informations suivantes (laisser vide si correct):\n" +
-                            "Prénom: ");
+                            "Veuillez entrer les informations suivantes (* si vide, _ pour un espace):\n" +
+                            "Prénom: " + ct[contactActuel].getPrenom());
                     ct[contactActuel].setPrenom(sc.next());
-                    System.out.print("Nom: ");
+                    System.out.print("Nom: " + ct[contactActuel].getNom());
                     ct[contactActuel].setNom(sc.next());
-                    System.out.print("Adresse:\n" +
-                            " Numéro civique: ");
+                    System.out.print("Adresse:\n");
+                    if (ct[contactActuel].ad.getNumeroCivique() != 0) System.out.print(" Numéro civique: " + ct[contactActuel].ad.getNumeroCivique());
+                    else System.out.print(" Numéro civique: ");
                     ct[contactActuel].ad.setNumeroCivique(sc.nextInt());
-                    System.out.print(" Rue: ");
-                    ct[contactActuel].ad.setRue(sc.nextLine());
-                    System.out.print(" Appartement: ");
+                    System.out.print(" Rue: " + ct[contactActuel].ad.getRue());
+                    ct[contactActuel].ad.setRue(sc.next());
+                    System.out.print(" Appartement: " + ct[contactActuel].ad.getAppartement());
                     ct[contactActuel].ad.setAppartement(sc.next());
-                    System.out.print(" Ville: ");
-                    ct[contactActuel].ad.setVille(sc.nextLine());
-                    System.out.print(" Province: ");
-                    ct[contactActuel].ad.setProvince(sc.nextLine());
-                    System.out.print(" Pays: ");
-                    ct[contactActuel].ad.setPays(sc.nextLine());
+                    System.out.print(" Ville: " + ct[contactActuel].ad.getVille());
+                    ct[contactActuel].ad.setVille(sc.next());
+                    System.out.print(" Province: " + ct[contactActuel].ad.getProvince());
+                    ct[contactActuel].ad.setProvince(sc.next());
+                    System.out.print(" Pays: " + ct[contactActuel].ad.getPays());
+                    ct[contactActuel].ad.setPays(sc.next());
                     System.out.print("Occupation:\n" +
-                            " Poste: ");
-                    ct[contactActuel].setPoste(sc.nextLine());
+                            " Poste: " + ct[contactActuel].occ.getPoste());
+                    ct[contactActuel].occ.setPoste(sc.next());
                     System.out.print(" Entreprise:\n" +
-                            "  Nom: ");
-
+                            "  Nom: " + ct[contactActuel].occ.ent.getNom());
+                    ct[contactActuel].occ.ent.setNom(sc.next());
+                    System.out.print("  Addresse:\n");
+                    if (ct[contactActuel].occ.ent.ad.getNumeroCivique() != 0) System.out.print(" Numéro civique: " + ct[contactActuel].occ.ent.ad.getNumeroCivique());
+                    else System.out.print("   Numéro civique: ");
+                    ct[contactActuel].occ.ent.ad.setNumeroCivique(sc.nextInt());
+                    System.out.print("   Rue: " + ct[contactActuel].occ.ent.ad.getRue());
+                    ct[contactActuel].occ.ent.ad.setRue(sc.next());
+                    System.out.print("   Appartement: " + ct[contactActuel].occ.ent.ad.getAppartement());
+                    ct[contactActuel].occ.ent.ad.setAppartement(sc.next());
+                    System.out.print("   Ville: " + ct[contactActuel].occ.ent.ad.getRue());
+                    ct[contactActuel].occ.ent.ad.setVille(sc.next());
+                    System.out.print("   Province: " + ct[contactActuel].occ.ent.ad.getProvince());
+                    ct[contactActuel].occ.ent.ad.setProvince(sc.next());
+                    System.out.print("   Pays: " + ct[contactActuel].occ.ent.ad.getPays());
+                    ct[contactActuel].occ.ent.ad.setPays(sc.next());
+                    System.out.print("\nEntrer un numéro de téléphone (o/n) ? ");
+                    entreeChar = sc.next().toLowerCase().charAt(0);
 
 
                     break;
@@ -63,7 +82,8 @@ public class main {
                                     "> ");
                             entree = sc.nextInt() - 1;
                         }
-                        System.out.println("\nPrénom: " + ct[contactActuel].getPrenom() + "\n" +
+                        System.out.println("\nContact #" + (contactActuel + 1) + "\n" +
+                                "Prénom: " + ct[contactActuel].getPrenom() + "\n" +
                                 "Nom: " + ct[contactActuel].getNom() + "\n" +
                                 "Adresse:\n" +
                                 " Numéro civique: " + ct[contactActuel].ad.getNumeroCivique() + "\n" +
@@ -75,10 +95,6 @@ public class main {
                                 "");
                     }
                     else System.out.println("\nVous n'avez pas de contacts.");
-                    break;
-
-                case 3:
-
                     break;
                 case 4: continuer = false;
             }

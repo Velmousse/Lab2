@@ -4,5 +4,13 @@
 public class Entreprise {
     String nom = "";
 
-    Adresse add = new Adresse();
+    Adresse ad = new Adresse();
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 }

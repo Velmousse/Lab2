@@ -25,9 +25,7 @@ public class Adresse {
         return appartement;
     }
 
-    public void setAppartement(String appartement) {
-        this.appartement = appartement;
-    }
+    public void setAppartement(String appartement) { if (appartement != "*") this.appartement = appartement; }
 
     public String getVille() {
         return ville;

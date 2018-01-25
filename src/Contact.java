@@ -25,15 +25,6 @@ public class Contact {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+    public void setNom(String nom) { if (nom != "*") this.nom = nom; }
 
-    public String getPoste() {
-        return poste;
-    }
-
-    public void setPoste(String poste) {
-        this.poste = poste;
-    }
 }

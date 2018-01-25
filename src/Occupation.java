@@ -3,5 +3,14 @@
  */
 public class Occupation {
     String poste = "";
+
     Entreprise ent = new Entreprise();
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
 }
