@@ -1,16 +1,12 @@
-/**
- * Created by DufVi1731300 on 2018-01-22.
- */
 public class Adresse {
-    private int numeroCivique = 0;
-    private String rue = "", appartement = "", ville = "", province = "", pays = "";
+    private String rue = "", appartement = "", ville = "", province = "", pays = "", numeroCivique = "";
 
-    public int getNumeroCivique() {
+    public String getNumeroCivique() {
         return numeroCivique;
     }
 
-    public void setNumeroCivique(int numeroCivique) {
-        this.numeroCivique = numeroCivique;
+    public void setNumeroCivique(String numeroCivique) {
+        if (!numeroCivique.equals("")) this.numeroCivique = numeroCivique;
     }
 
     public String getRue() {
@@ -18,21 +14,21 @@ public class Adresse {
     }
 
     public void setRue(String rue) {
-        this.rue = rue;
+        if (!rue.equals("")) this.rue = rue;
     }
 
     public String getAppartement() {
         return appartement;
     }
 
-    public void setAppartement(String appartement) { if (appartement != "*") this.appartement = appartement; }
+    public void setAppartement(String appartement) { if (!appartement.equals("")) this.appartement = appartement; }
 
     public String getVille() {
         return ville;
     }
 
     public void setVille(String ville) {
-        this.ville = ville;
+        if (!ville.equals("")) this.ville = ville;
     }
 
     public String getProvince() {
@@ -40,7 +36,7 @@ public class Adresse {
     }
 
     public void setProvince(String province) {
-        this.province = province;
+        if (!province.equals("")) this.province = province;
     }
 
     public String getPays() {
@@ -48,6 +44,6 @@ public class Adresse {
     }
 
     public void setPays(String pays) {
-        this.pays = pays;
+        if (!pays.equals("")) this.pays = pays;
     }
 }

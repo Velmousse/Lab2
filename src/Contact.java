@@ -1,8 +1,6 @@
-/**
- * Created by DufVi1731300 on 2018-01-22.
- */
 public class Contact {
     static int nbContacts = 0;
+    private int nbTelephones = 0;
     private String prenom = "", nom = "", poste = "";
 
     Occupation occ = new Occupation();
@@ -18,13 +16,23 @@ public class Contact {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        if (!prenom.equals("")) this.prenom = prenom;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom) { if (nom != "*") this.nom = nom; }
+    public void setNom(String nom) {
+        if (!nom.equals("")) this.nom = nom;
+    }
 
+    public int getNbTelephones() {
+        return nbTelephones;
+    }
+
+    public void addNbTelephones() {
+        tel[this.nbTelephones] = new Telephone();
+        this.nbTelephones++;
+    }
 }

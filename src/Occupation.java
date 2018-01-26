@@ -1,6 +1,3 @@
-/**
- * Created by DufVi1731300 on 2018-01-22.
- */
 public class Occupation {
     String poste = "";
 
@@ -11,6 +8,6 @@ public class Occupation {
     }
 
     public void setPoste(String poste) {
-        this.poste = poste;
+        if (!poste.equals("")) this.poste = poste;
     }
 }

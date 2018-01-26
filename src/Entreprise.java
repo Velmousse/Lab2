@@ -1,6 +1,3 @@
-/**
- * Created by DufVi1731300 on 2018-01-22.
- */
 public class Entreprise {
     String nom = "";
 
@@ -11,6 +8,6 @@ public class Entreprise {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if (!nom.equals("")) this.nom = nom;
     }
 }
