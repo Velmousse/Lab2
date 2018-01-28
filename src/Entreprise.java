@@ -1,5 +1,5 @@
 public class Entreprise {
-    String nom = "";
+    private String nom = "";
 
     Adresse ad = new Adresse();
 

@@ -1,5 +1,5 @@
 public class Occupation {
-    String poste = "";
+    private String poste = "";
 
     Entreprise ent = new Entreprise();
 

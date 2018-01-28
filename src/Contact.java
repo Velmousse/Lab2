@@ -32,7 +32,9 @@ public class Contact {
     }
 
     public void addNbTelephones() {
-        tel[this.nbTelephones] = new Telephone();
-        this.nbTelephones++;
+        if (this.nbTelephones < 10) {
+            tel[this.nbTelephones] = new Telephone();
+            this.nbTelephones++;
+        }
     }
 }

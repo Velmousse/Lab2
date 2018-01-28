@@ -6,7 +6,7 @@ public class Telephone {
     }
 
     public void setNumero(String numero) {
-        this.numero = numero;
+       if (!numero.equals("")) this.numero = numero;
     }
 
     public String getInfos() {
@@ -14,6 +14,6 @@ public class Telephone {
     }
 
     public void setInfos(String infos) {
-        this.infos = infos;
+        if (!infos.equals("")) this.infos = infos;
     }
 }

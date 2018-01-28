@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         boolean continuer = true, next = false; //next empêche une intrusion dans les paramètres d'un contact.
-        int entree = 0, contactActuel = 0;
+        int entree = 0, contactActuel = 0, telephoneActuel = 0;
         String rouge = (char)27 + "[31m", noir = (char)27 + "[30m";
         char entreeChar = ' ';
 
@@ -70,16 +70,22 @@ public class main {
                         ct[contactActuel].occ.ent.ad.setProvince(sc.nextLine());
                         System.out.print("   Pays: " + ct[contactActuel].occ.ent.ad.getPays());
                         ct[contactActuel].occ.ent.ad.setPays(sc.nextLine());
-                        System.out.print("\nEntrer un numéro de téléphone (o/n) ? ");
+                        System.out.print("\nEntrer/modifer un numéro de téléphone (o/n)? ");
                         entreeChar = sc.nextLine().toLowerCase().charAt(0);
-                        while (entreeChar == 'o' && ct[contactActuel].getNbTelephones() < 10){
-                            ct[contactActuel].addNbTelephones();
-
-
-                            System.out.print("\nEntrer un numéro de téléphone (o/n) ? ");
+                        telephoneActuel = 0;
+                        while (entreeChar == 'o' && ct[contactActuel].getNbTelephones() < 10 || entree == 3){
+                            if (entree == 1) {
+                                ct[contactActuel].addNbTelephones();
+                            }
+                            System.out.print("Telephone: \n" +
+                                    " Information (cellulaire, maison, travail): " + ct[contactActuel].tel[telephoneActuel].getInfos());
+                            ct[contactActuel].tel[telephoneActuel].setInfos(sc.nextLine());
+                            System.out.print(" Numéro: " + ct[contactActuel].tel[telephoneActuel].getNumero());
+                            ct[contactActuel].tel[telephoneActuel].setNumero(sc.nextLine());
+                            System.out.print("\nEntrer/modifier un numéro de téléphone (o/n)? ");
                             entreeChar = sc.nextLine().toLowerCase().charAt(0);
+                            telephoneActuel++;
                         }
-
                         next = false;
                     }
                     break;
@@ -88,23 +94,47 @@ public class main {
                         if (Contact.nbContacts == 1) {
                             System.out.print("\nVous avez un contact:");
                             contactActuel = 0;
+                            next = true;
                         }
                         else {
-                            System.out.print("\nÀ quelle position voulez-vous voir la fiche du contact?\n" +
+                            System.out.print("\nVous avez " + Contact.nbContacts + " contacts. À quelle position voulez-vous voir la fiche du contact? " +
                                     "> ");
                             entree = sc.nextInt() - 1;
+                            if (ct[entree] != null) {
+                                contactActuel = entree;
+                                next = true;
+                            }
+                            else System.out.print("Ce contact n'existe pas.");
                         }
-                        System.out.println("\nContact #" + (contactActuel + 1) + "\n" +
-                                "Prénom: " + rouge + ct[contactActuel].getPrenom() + "\n" +
-                                "Nom: " + ct[contactActuel].getNom() + "\n" +
-                                "Adresse:\n" +
-                                " Numéro civique: " + ct[contactActuel].ad.getNumeroCivique() + "\n" +
-                                " Rue: " + ct[contactActuel].ad.getRue() + "\n" +
-                                " Appartement: " + ct[contactActuel].ad.getAppartement() + "\n" +
-                                " Ville: " + ct[contactActuel].ad.getVille() + "\n" +
-                                " Province: " + ct[contactActuel].ad.getProvince() + "\n" +
-                                " Pays: " + ct[contactActuel].ad.getPays() + "\n" +
-                                "");
+                        if (next) {
+                            System.out.println("\nContact #" + rouge + (contactActuel + 1) + "\n" + noir +
+                                    "Prénom: " + rouge + ct[contactActuel].getPrenom() + "\n" + noir +
+                                    "Nom: " + rouge + ct[contactActuel].getNom() + "\n" + noir +
+                                    "Adresse:\n" +
+                                    " Numéro civique: " + rouge + ct[contactActuel].ad.getNumeroCivique() + "\n" + noir +
+                                    " Rue: " + rouge + ct[contactActuel].ad.getRue() + "\n" + noir +
+                                    " Appartement: " + rouge + ct[contactActuel].ad.getAppartement() + "\n" + noir +
+                                    " Ville: " + rouge + ct[contactActuel].ad.getVille() + "\n" + noir +
+                                    " Province: " + rouge + ct[contactActuel].ad.getProvince() + "\n" + noir +
+                                    " Pays: " + rouge + ct[contactActuel].ad.getPays() + "\n" + noir +
+                                    "Occuptaion: \n" +
+                                    " Poste: " + rouge + ct[contactActuel].occ.getPoste() + "\n" + noir +
+                                    " Entreprise: \n" +
+                                    "  Nom: " + rouge + ct[contactActuel].occ.ent.getNom() + "\n" + noir +
+                                    "  Adresse:\n" +
+                                    "   Numéro civique: " + rouge + ct[contactActuel].occ.ent.ad.getNumeroCivique() + "\n" + noir +
+                                    "   Rue: " + rouge + ct[contactActuel].occ.ent.ad.getRue() + "\n" + noir +
+                                    "   Appartement: " + rouge + ct[contactActuel].occ.ent.ad.getAppartement() + "\n" + noir +
+                                    "   Ville: " + rouge + ct[contactActuel].occ.ent.ad.getVille() + "\n" + noir +
+                                    "   Province: " + rouge + ct[contactActuel].occ.ent.ad.getProvince() + "\n" + noir +
+                                    "   Pays: " + rouge + ct[contactActuel].occ.ent.ad.getPays() + "\n" + noir +
+                                    "Téléphone(s):\n");
+                            for (int i = 0; i < ct[contactActuel].getNbTelephones(); i++) {
+
+                            }
+
+                            next = false;
+                        }
                     }
                     else System.out.println("\nVous n'avez pas de contacts.");
                     break;
